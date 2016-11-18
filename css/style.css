@@ -1,0 +1,42 @@
+body {
+
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+}
+#gameStart {
+    width: auto;
+    height: auto;
+    padding:20px 20px 20px 20px;
+    text-align: center;
+    position: fixed;
+    margin-top: -85px;
+    margin-left: -162px;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    color:white;
+}
+#gameEnd{
+    width: auto;
+    height: auto;
+    padding:20px 20px 20px 20px;
+    text-align: center;
+    position: fixed;
+    margin-top: -85px;
+    margin-left: -115px;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    color:white;
+}
+.buttonsEnd{
+    margin-top: 30px;
+}
+.headingInfo{
+    margin-top: 10px;
+}
+.list{
+    margin-left: -25px;
+}
