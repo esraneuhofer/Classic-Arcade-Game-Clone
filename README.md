@@ -1,6 +1,5 @@
+<h1>Classic Arcade Game Clone</h1>  
 
-Classic Arcade Game Clone
-____________________________________
 
 Project Overview
 
