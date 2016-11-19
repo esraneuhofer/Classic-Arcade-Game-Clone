@@ -28,7 +28,7 @@ If you do you loose a life.
 
 ######Locally
 
-**1.** Clone this repo:
+**1.** Clone this repo or download zip.file
 
 ```
 $ git clone https://github.com/esraneuhofer/Classic-Arcade-Game-Clone.git
