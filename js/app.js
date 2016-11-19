@@ -41,7 +41,7 @@ var Enemy = function(startingX,startingY,speed) {
 
     this.x = startingX;
     this.y = startingY;
-    this.speed = Math.floor(Math.random() * speed) + 200// Random speed
+    this.speed = (Math.floor(Math.random() * speed) + 200);// Random speed
     this.sprite = 'images/enemy-bug.png'; // image of Enemey
 };
 
@@ -57,13 +57,13 @@ Enemy.prototype.update = function(dt) {
 
     //checks for collision with Player and is reset to beginning
     if(this.y === player.y && (this.x >= player.x-65 && this.x <= player.x+52 )){
-            lives --;
-            $('#lives').empty().append(lives);
+        lives --;
+        $('#lives').empty().append(lives);
 
         if (lives === 0){
-            endGame()
+            endGame();
         }
-            player.reset();
+        player.reset();
     }
 };
 Enemy.prototype.render = function() {
@@ -77,49 +77,48 @@ var Player = function () {
     this.x = 202;
     this.y = 415;
     this.sprite = 'images/char-boy.png';
-}
+};
 
 //if players reaches "Water" points are added and player is set to start
 Player.prototype.update = function(dt){
-        if(this.y === 0){
-            score =score+50;
-            $('.score').empty().append(score);
-            this.reset();
-        }
-}
+    if(this.y === 0){
+        score =score+50;
+        $('.score').empty().append(score);
+        this.reset();
+    }
+};
 Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-}
+};
 
 //Handels players Input on keyboard
 //if player not over max width or heigth of canvas player moves
 Player.prototype.handleInput = function(key) {
 
-            if(key === "left"){
-                var leftPos = this.x - length_X;
-                if (leftPos >= min_X_Player) {
-                    this.x = leftPos;
-                }
-            }
-           else if(key === "up"){
-                var upPos = this.y - height_Y;
-                    if (upPos >= min_Y_Player) {
-                        this.y = upPos;
-                    }
-            }
-            else if(key === "right"){
-                var rightPos = this.x + length_X;
-                    if (rightPos <= max_X_Player) {
-                        this.x = rightPos;
-                    }
-            }
-            else if(key === "down"){
-                var downPos = this.y + height_Y;
-                    if (downPos <= max_Y_Player) {
-                        this.y = downPos;
-                    }
-            }
+    if(key === "left"){
+        var leftPos = this.x - length_X;
+        if (leftPos >= min_X_Player) {
+            this.x = leftPos;
+        }
+    }
+    else if(key === "up"){
+        var upPos = this.y - height_Y;
+        if (upPos >= min_Y_Player) {
+            this.y = upPos;
+        }
+    }
+    else if(key === "right"){
+        var rightPos = this.x + length_X;
+        if (rightPos <= max_X_Player) {
+            this.x = rightPos;
+        }
+    }
+    else if(key === "down"){
+        var downPos = this.y + height_Y;
+        if (downPos <= max_Y_Player) {
+            this.y = downPos;
+        }
+    }
 };
 
 //resets player to starting postion
@@ -184,7 +183,7 @@ $('#buttonStart').click(function() {
     var speedMonster;
     var amountMonster;
     var timeGame;
-    var livesGame
+    var livesGame;
 
 
     var speedString = $('input[name=speedRadio]:checked').val();
@@ -253,22 +252,22 @@ function activateSound(){
     }, false);
     sound.play();
     $('#volumeOff').hide();
-    $('#volumeOn').show()
+    $('#volumeOn').show();
 }
 
 //Deavtivates Sound
 function deactivateSound(){
     sound.pause();
-    $('#volumeOff').show()
-    $('#volumeOn').hide()
+    $('#volumeOff').show();
+    $('#volumeOn').hide();
 }
 
 //Toggel Button to activate and deactivated the sound
 $('#volumeOff').click(function () {
-    activateSound()
+    activateSound();
 });
 $('#volumeOn').click(function () {
-    deactivateSound()
+    deactivateSound();
 });
 
 //Resets and opens modal
@@ -276,5 +275,5 @@ $('#reset').click(function () {
     endGame();
 
 });
-activateSound()
+activateSound();
 

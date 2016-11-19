@@ -4,21 +4,11 @@
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'VT323', monospace;
-
-        }
-
-    </style>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
-    <div class="points">
-
-    </div>
     <heading>
         <div class="row sound">
             <div class="col-md-offset-10">
@@ -31,28 +21,17 @@
                         <button id="reset" class="btn btn-default">Reset</button>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
         <div class="row headingInfo">
             <div class="col-md-4 ">
                 <span class="info">Score: <span class="score"></span></span>
             </div>
-
             <div class="col-md-4 col-md-offset-4">
                 <span class="info">Lives: <span id="lives"></span></span>
             </div>
         </div>
-        <div class="row getOptionsButton">
-            <div class="col-md-offset-10">
-
-            </div>
-
-        </div>
     </heading>
-
     <div class="modal fade" id="modalStart" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -61,13 +40,6 @@
                     <span class="modal-title">Welcome to Arcade Frogger</span>
                 </div>
                 <div class="modal-body">
-                    <!--<ul>-->
-                        <!--<li>Goal is to reach the water</li>-->
-                        <!--<li>If you make it you gain 50Points</li>-->
-                        <!--<li>Dont let the monsters get you</li>-->
-                        <!--<li>You've got 20 second</li>-->
-                        <!--<li>Try getting as many points as possible</li>-->
-                    <!--</ul>-->
                     <div class="difficult_Choice">
                         <div class="row">
                             <span class="info">Speed</span>
@@ -77,7 +49,7 @@
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="speedRadio" id="optionSpeed1" value="slow" checked>
-                                               <span class="infoText">Slow</span>
+                                                <span class="infoText">Slow</span>
                                             </label>
                                         </div>
 
@@ -86,7 +58,7 @@
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="speedRadio" id="optionSpeed2" value="fast">
-                                                 <span class="infoText">Fast</span>
+                                                <span class="infoText">Fast</span>
                                             </label>
                                         </div>
 
@@ -170,22 +142,16 @@
                                             <label>
                                                 <input type="radio" name="livesRadio" id="optionLives3" value="five">
                                                 <span class="infoText">5!!!!</span>
-
                                             </label>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="modal-footer row">
-
                     <button id="buttonStart" type="button" class="btn btn-lg btn-success col-md-8 col-md-offset-2" data-dismiss="modal">Start Game</button>
-
                 </div>
             </div>
         </div>
@@ -199,24 +165,19 @@
                     <span>Points <span class="score"></span> </span>
                 </div>
                 <div class="modal-body">
-
                 </div>
                 <div class="modal-footer row">
                     <button id="restart" type="button" class="btn btn-lg btn-success col-md-4 col-md-offset-2" data-dismiss="modal">Change</button>
-
                     <button id="again" type="button" class="btn btn-lg btn-success col-md-4 col-md-offset-2" data-dismiss="modal">Play again</button>
-
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="js/resources.js"></script>
+<script src="js/app.js"></script>
+<script src="js/engine.js"></script>
 </body>
 </html>
