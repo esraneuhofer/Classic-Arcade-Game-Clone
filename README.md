@@ -6,16 +6,16 @@ You where provided visual assets and a game loop engine.Using these tools you wh
 
 ##Game Instructions
 ```
-Run index.html
+#####Run index.html
 
-Select Options 
+######Select Options 
 -Monster Spees
 -Amount of Monsters
 -Lives to start
 
-Press Play
+#####Press Play
 
-Aim:
+#####Aim of the game:
 Cross to the other side and reach the water.
 Each time you reach water u gain 50 points and you beginn from the start
 Get as many points as possible 
