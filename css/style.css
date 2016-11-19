@@ -1,9 +1,54 @@
 body {
-
     text-align: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('../images/header.jpg');
 }
+
+
+canvas{
+    overflow-y: hidden;
+    margin-top: -370px;
+
+}
+.headingInfo{
+    margin-top: 200px;
+
+
+}
+#buttonStart{
+    background: #000;
+}
+#buttonRestart, #restart , #again{
+    background: #000;
+}
+.modal-header span{
+    font-size: 2.5em;
+    color:white;
+}
+.headingInfo .info{
+    font-size: 2.5em;
+    color:white;
+}
+
+.difficult_Choice .info{
+    font-size: 1.8em;
+}
+.difficult_Choice .infoText{
+    font-size: 1.5em;
+}
+
+
 ul {
     list-style-type: none;
+}
+header{
 }
 #gameStart {
     width: auto;
@@ -34,9 +79,31 @@ ul {
 .buttonsEnd{
     margin-top: 30px;
 }
-.headingInfo{
-    margin-top: 10px;
-}
+
 .list{
     margin-left: -25px;
+}
+.difficult_Choice{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-header{
+    /*background: #00B7FF;*/
+    background-color: black;
+}
+
+span.glyphicon-volume-off {
+    font-size: 2.3em;
+}
+span.glyphicon-volume-up{
+    font-size: 2.3em;
+
+}
+.sound{
+    margin-top:40px;
+}
+#getOptionsButton{
+    padding-top:700px;
+    margin-top: 700px;
 }

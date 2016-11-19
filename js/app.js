@@ -1,16 +1,27 @@
+//Opens Starting Modal on load to choose options and start the game
+$('#modalStart').modal('show');
 
+//Hides Volume off
+$('#volumeOff').hide();
+
+//Creates empty Array to prevent error Message
 function init (){
-    $('#gameEnd').hide();
     allEnemies=[];
 }
 init();
-//width and height of one "Field" on canvas defined in engine.js
 
+//width and height of one "Field" on canvas defined in engine.js
 var length_X = 101;
 var height_Y = 83;
 
+//Setting variables
+var sound;
 var score ;
+var lives;
+var oldLives; //keep track of lives for restarting with same options
 var time;
+var speed;
+var numberEnemey;
 
 //max width of Enemy
 var max_X_Enemy =505;
@@ -19,38 +30,39 @@ var max_X_Enemy =505;
 var min_X_Player = 0;
 var min_Y_Player = -40;
 var max_X_Player = 404;
-var max_Y_Player = 415;
-
-
-
-function log (input){
-    console.log(input);
-}
-
-
-
+var max_Y_Player = 498;
+var start_X_Player=2*length_X;
+var start_Y_Player=6*height_Y;
 
 //ENEMIES:
 //Defining Enemie Classes
-var Enemy = function(startingX,startingY) {
+//speed gets set on startgame()
+var Enemy = function(startingX,startingY,speed) {
 
     this.x = startingX;
     this.y = startingY;
-    this.speed = Math.floor(Math.random() * 400) + 200// Random speed
+    this.speed = Math.floor(Math.random() * speed) + 200// Random speed
     this.sprite = 'images/enemy-bug.png'; // image of Enemey
 };
 
+//checks if Enemy goes over boundary
+//Multiplied by dt as per instruction to keep it fluent
 Enemy.prototype.update = function(dt) {
-    //checks if Enemy goes over boundary
     if (this.x > max_X_Enemy) {
         this.x =-Math.floor((Math.random() * 5) + 1) * length_X;
-        this.y = Math.floor((Math.random() * 3) + 1) * height_Y;
+        this.y = Math.floor((Math.random() * 4) + 2) * height_Y;
     } else {
         this.x = this.x + (this.speed * dt);
     }
 
     //checks for collision with Player and is reset to beginning
     if(this.y === player.y && (this.x >= player.x-65 && this.x <= player.x+52 )){
+            lives --;
+            $('#lives').empty().append(lives);
+
+        if (lives === 0){
+            endGame()
+        }
             player.reset();
     }
 };
@@ -60,17 +72,17 @@ Enemy.prototype.render = function() {
 
 
 //Player:
-//Defining Player Classes
+//Defining Player
 var Player = function () {
     this.x = 202;
     this.y = 415;
     this.sprite = 'images/char-boy.png';
 }
+
+//if players reaches "Water" points are added and player is set to start
 Player.prototype.update = function(dt){
-    //if players reaches "Water" points are added and player is set to start
         if(this.y === 0){
             score =score+50;
-            //time = time +5;
             $('.score').empty().append(score);
             this.reset();
         }
@@ -80,9 +92,10 @@ Player.prototype.render = function(){
 
 }
 
+//Handels players Input on keyboard
+//if player not over max width or heigth of canvas player moves
 Player.prototype.handleInput = function(key) {
-    //Handels players Input on keyboard
-    //if player not over max width or heigth of canvas player moves
+
             if(key === "left"){
                 var leftPos = this.x - length_X;
                 if (leftPos >= min_X_Player) {
@@ -108,54 +121,50 @@ Player.prototype.handleInput = function(key) {
                     }
             }
 };
+
+//resets player to starting postion
 Player.prototype.reset = function(){
-    //resets player to starting postion
-    this.x = 202;
-    this.y = 415;
+    this.x = start_X_Player;
+    this.y = start_Y_Player;
 };
 
-
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-//var allEnemies=[];
-
-//var allEnemies;//define var to prevent error
 var player = new Player();
-var countdown ;
 
-function startgame (){
+//takes 3 parameters which are set by player
+//Resets games
+function startgame (speedValue,enemyValue,livesValue){
+    player.x = start_X_Player;
+    player.y = start_Y_Player;
     score = 0;
-    time = 20;
-    $('#time').empty().append(time);
-    var countdown = setInterval(function () {
-        time --;
-        if(time === 0){
-            endGame();
-            clearInterval(countdown);
+
+    //Sets new parameters for Enemies and time
+    oldLives=livesValue;
+    lives = livesValue;
+    numberEnemey = enemyValue;
+    speed =speedValue;
+
+    $('#lives').empty().append(lives);
+
+    //Starts timer
+    //var countdown = setInterval(function () {
+    //    time --;
+    //    if(time === 0){
+    //        endGame();
+    //        clearInterval(countdown);
+    //    }
+    //    $('#lives').empty().append(time);
+    //},1000)
 
 
-        }
-        $('#time').empty().append(time);
-    },1000)
-
-
-    $('#gameEnd').hide();
     $('.score').empty().append(score);
 
-    var enemy_Start_X = -(Math.floor((Math.random() * 5) + 1) * length_X);
-    var enemy_Start_Y = Math.floor((Math.random() * 3) + 1) * height_Y;
-
-    enemy = new Enemy(enemy_Start_X,enemy_Start_Y);
-    enemy2 = new Enemy(enemy_Start_X,enemy_Start_Y);
-    enemy3 = new Enemy(enemy_Start_X,enemy_Start_Y);
-    enemy4 = new Enemy(enemy_Start_X,enemy_Start_Y);
-
-    allEnemies = [enemy, enemy2, enemy3,enemy4];
+    //Initiates amount of Enemies
+    for (var i = 0;i<numberEnemey;i++){
+        var enemy_Start_X = -(Math.floor((Math.random() * 5) + 1) * length_X);
+        var enemy_Start_Y = Math.floor((Math.random() * 4) + 2) * height_Y;
+        allEnemies.push(new Enemy(enemy_Start_X,enemy_Start_Y,speed));
+    }
 }
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -169,25 +178,103 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-//Button first start
+//Button start game
+//Get values through input in modal
 $('#buttonStart').click(function() {
-    startgame();
-    $('#gameStart').hide();
-    player.x = 202;
-    player.y = 415;
+    var speedMonster;
+    var amountMonster;
+    var timeGame;
+    var livesGame
+
+
+    var speedString = $('input[name=speedRadio]:checked').val();
+    if(speedString === "slow"){
+        speedMonster = 200;
+
+    }
+    if(speedString === "fast"){
+        speedMonster = 400;
+    }
+    if(speedString === "insane"){
+        speedMonster = 600;
+    }
+
+    var amountString = $('input[name=amountRadio]:checked').val();
+    if(amountString === "few"){
+        amountMonster = 3;
+    }
+    if(amountString === "many"){
+        amountMonster = 6;
+    }
+    if(amountString === "army"){
+        amountMonster = 8;
+    }
+
+    var livesString = $('input[name=livesRadio]:checked').val();
+    if(livesString === "one"){
+        livesGame = 1;
+    }
+    if(livesString === "three"){
+        livesGame = 3;
+    }
+    if(livesString === "five"){
+        livesGame = 5;
+    }
+    startgame(speedMonster,amountMonster,livesGame);
+    player.x = start_X_Player;
+    player.y = start_Y_Player;
 
 });
-//BUtton repeat game
+//Button repeat game
+//Repeats game with former input
 $( "#again" ).click(function() {
-    startgame();
-    $('#gameEnd').hide();
-    player.x = 202;
-    player.y = 415;
+    startgame(speed,numberEnemey,oldLives);
 
 });
-//Ending Game
+//Opens Starting Modal to set new options
+$( "#restart" ).click(function() {
+    $('#modalStart').modal('show');
+});
+//End game function is called when time is over
 function endGame() {
     allEnemies=[];
-    $('#time').empty().append(0);
-    $('#gameEnd').show();
+    $('#lives').empty().append(0);
+    $('#modalEnd').modal('show');
 }
+
+//Activates Sound
+//Sets a loop
+function activateSound(){
+
+    sound = new Audio('audio/backgroundmusic.mp3');
+    sound.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+    sound.play();
+    $('#volumeOff').hide();
+    $('#volumeOn').show()
+}
+
+//Deavtivates Sound
+function deactivateSound(){
+    sound.pause();
+    $('#volumeOff').show()
+    $('#volumeOn').hide()
+}
+
+//Toggel Button to activate and deactivated the sound
+$('#volumeOff').click(function () {
+    activateSound()
+});
+$('#volumeOn').click(function () {
+    deactivateSound()
+});
+
+//Resets and opens modal
+$('#reset').click(function () {
+    endGame();
+
+});
+activateSound()
+

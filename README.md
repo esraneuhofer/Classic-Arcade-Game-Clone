@@ -1,59 +1,6 @@
-#Classic Arcade Game Clone
+frontend-nanodegree-arcade-game
+===============================
 
-######Project Overview
-Project #3 of Udacity's Front-End Web Developer Nanodegree.
-You where provided visual assets and a game loop engine.Using these tools you where supposed to add a number of entities to the game including the player characters and enemies to recreate the classic arcade game Frogger.
+Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
 
-##Game Instructions
-
-#####Run index.html
-
-######Select Options 
--Monster Spees
--Amount of Monsters
--Lives to start
-
-#####Press Play
-
-#####Aim of the game:
-Cross to the other side and reach the water.
-Each time you reach water u gain 50 points and you beginn from the start
-Get as many points as possible 
-Dont collide with monsters!
-If you do you loose a life.
-
-
-
-##Getting Started
-
-######Locally
-
-**1.** Clone this repo or download zip.file
-
-```
-$ git clone https://github.com/esraneuhofer/Classic-Arcade-Game-Clone.git
-````
-
-**2.** Serve the application:
-
-```
-$ run index.html
-```
-
-
-##Resources
-
-######JavaScript
-######CSS
-######HTML
-######Bootstrap
-######jQuery
-
-CSS
-HTML
-JavaScript
-jQuery
-Bootstrap
-
-Backgroundmusic :
-youtube:GermanNintendoGamer
+For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
