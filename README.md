@@ -28,7 +28,7 @@ If you do you'll loose a life
 **1.** Clone this repo:
 
 ```
-$ git clone hhttps://github.com/esraneuhofer/Classic-Arcade-Game-Clone.git
+$ git clone https://github.com/esraneuhofer/Classic-Arcade-Game-Clone.git
 ````
 
 **2.** Serve the application:
