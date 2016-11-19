@@ -3,7 +3,8 @@
 
 ######Project Overview
 
-Project #3 of Udacity's Nanodegree Programm
+Project #3 of Udacity's Nanodegree Programm.
+"You will be provided visual assets and a game loop engine; using these tools you must add a number of entities to the game including the player characters and enemies to recreate the classic arcade game Frogger."
 
 ##Game Info
 
@@ -27,7 +28,7 @@ If you do you'll loose a life
 **1.** Clone this repo:
 
 ```
-$ git clone https://github.com/mikejoyceio/arcade-game
+$ git clone hhttps://github.com/esraneuhofer/Classic-Arcade-Game-Clone.git
 ````
 
 **2.** Serve the application:
